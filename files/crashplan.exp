@@ -1,0 +1,42 @@
+#!/usr/bin/env expect
+
+spawn "./install.sh"
+
+expect "Press enter to continue with installation."
+send "\r"
+
+expect "Press enter to read the EULA."
+send "\r"
+
+expect "More"
+send "q\r"
+
+expect "Do you accept and agree to be bound by the EULA?"
+send "yes\r"
+
+expect "What parent directory do you wish to install CrashPlan into?"
+send "/usr/local\r"
+
+expect "/usr/local/crashplan does not exist.  Create /usr/local/crashplan?"
+send "y\r"
+
+expect "What directory do you wish to link the CrashPlan executable to?"
+send "/usr/local/bin\r"
+
+expect "What directory do you wish to store backups in?"
+send "/storage\r"
+
+expect "/storage does not exist.  Create /storage?"
+send "y\r"
+
+expect "What directory contains your SYSV init scripts?"
+send "/etc/init.d\r"
+
+expect "What directory contains your runlevel init links?"
+send "/etc/rc2.d\r"
+
+expect "Is this correct?"
+send "y\r"
+
+expect "Press Enter to complete installation."
+send "\r"

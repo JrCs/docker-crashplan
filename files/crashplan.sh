@@ -70,6 +70,9 @@ else
     exit 1
 fi
 
+# Disable auto update
+chmod -R -x $TARGETDIR/upgrade/
+
 if [[ -z "$PUBLIC_IP" || -z "$PUBLIC_PORT" ]]; then
     # Default values :(
     PUBLIC_IP=0.0.0.0

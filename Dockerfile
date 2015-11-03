@@ -1,4 +1,4 @@
-FROM fedora:22
+FROM jeanblanchard/java:jre-8
 
 #########################################
 ##        ENVIRONMENTAL CONFIG         ##
@@ -15,7 +15,7 @@ ENV CRASHPLAN_VERSION=4.4.1
 #########################################
 ADD /files /tmp/installation
 
-## Increase max file watches
+# Increase max file watches
 # ADD /files/installation/60-max-user-watches.conf /etc/sysctl.d/60-max-user-watches.conf
 
 RUN chmod +x /tmp/installation/install.sh && /tmp/installation/install.sh && rm -rf /tmp/installation

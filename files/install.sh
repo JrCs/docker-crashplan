@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
-dnf install -y \
-	which procps findutils hostname \
-    expect wget tar cpio
+apk update
+apk add bash wget ca-certificates tar expect findutils coreutils procps
+apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/
 
 mkdir /tmp/crashplan
 
@@ -20,14 +20,14 @@ sed -i "s|</servicePeerConfig>|</servicePeerConfig>\n\t<serviceUIConfig>\n\t\t\
        <connectCheck>0</connectCheck>\n\t\t<showFullFilePath>false</showFullFilePath>\n\t\
  </serviceUIConfig>|g" /usr/local/crashplan/conf/default.service.xml
 
-dnf remove -y expect wget tar cpio
-dnf clean all
-
 # Install launchers
-mv /tmp/installation/{entrypoint.sh,crashplan.sh} /
-chmod +rx /{entrypoint.sh,crashplan.sh}
+cp /tmp/installation/entrypoint.sh /tmp/installation/crashplan.sh /
+chmod +rx /entrypoint.sh /crashplan.sh
+
+# Remove unneccessary package
+apk del wget ca-certificates expect
 
 # Remove unneccessary directories
-rm -rf /boot /home /lost+found /media /mnt /opt /run /srv
+rm -rf /boot /home /lost+found /media /mnt /run /srv
 rm -rf /usr/local/crashplan/log
-rm -rf /var/cache/dnf
+rm -rf /var/cache/apk/*

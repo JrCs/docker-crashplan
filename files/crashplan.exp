@@ -35,6 +35,9 @@ send "/etc/init.d\r"
 expect "What directory contains your runlevel init links?"
 send "/etc/rc2.d\r"
 
+expect "Create /etc/rc2.d?"
+send "y\r"
+
 expect "Is this correct?"
 send "y\r"
 

@@ -14,13 +14,6 @@ wget -O- http://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_$
 cd /tmp/crashplan && chmod +x /tmp/installation/crashplan.exp && /tmp/installation/crashplan.exp || exit $?
 cd / && rm -rf /tmp/crashplan
 
-#/usr/local/crashplan/bin/CrashPlanEngine start && sleep 2 && \
-#    /usr/local/crashplan/bin/CrashPlanEngine stop
-
-
-# Disable auto update
-chmod -R -x /usr/local/crashplan/upgrade/
-
 # Bind the UI port 4243 to the container ip
 sed -i "s|</servicePeerConfig>|</servicePeerConfig>\n\t<serviceUIConfig>\n\t\t\
        <serviceHost>0.0.0.0</serviceHost>\n\t\t<servicePort>4243</servicePort>\n\t\t\
@@ -30,9 +23,9 @@ sed -i "s|</servicePeerConfig>|</servicePeerConfig>\n\t<serviceUIConfig>\n\t\t\
 dnf remove -y expect wget tar cpio
 dnf clean all
 
-# Install launcher
-mv /tmp/installation/crashplan.sh /root/crashplan.sh
-chmod +rx /root/crashplan.sh
+# Install launchers
+mv /tmp/installation/{entrypoint.sh,crashplan.sh} /
+chmod +rx /{entrypoint.sh,crashplan.sh}
 
 # Remove unneccessary directories
 rm -rf /boot /home /lost+found /media /mnt /opt /run /srv

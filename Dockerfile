@@ -32,4 +32,5 @@ EXPOSE 4243 4242
 
 WORKDIR /usr/local/crashplan
 
-CMD [ "/root/crashplan.sh" ]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD [ "/crashplan.sh" ]

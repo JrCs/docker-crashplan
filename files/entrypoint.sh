@@ -30,10 +30,12 @@ _link() {
   ln -sf ${1} ${2}
 }
 
-# Check the timezone
-#if [[ $(cat /etc/timezone) != $TZ ]] ; then
-#   echo "$TZ" > /etc/timezone
-#fi
+# Update the timezone
+[[ -n "$TZ" ]] && echo "$TZ" > /etc/timezone
+
+# move binaries and lang files out of container so crashplan can be upgrade automaticaly
+_link /var/crashplan/lib  /usr/local/crashplan/lib
+_link /var/crashplan/lang /usr/local/crashplan/lang
 
 # move identity out of container, this prevent having to adopt account every time you rebuild the Docker
 _link /var/crashplan/id /var/lib/crashplan

@@ -18,7 +18,7 @@ mkdir /tmp/crashplan
 wget -O- http://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_${CRASHPLAN_VERSION}_Linux.tgz \
 	| tar -xz --strip-components=1 -C /tmp/crashplan
 
-cd /tmp/crashplan && chmod +x /tmp/installation/crashplan.exp && /tmp/installation/crashplan.exp || exit $?
+cd /tmp/crashplan && chmod +x /tmp/installation/crashplan.exp && sync && /tmp/installation/crashplan.exp || exit $?
 cd / && rm -rf /tmp/crashplan
 
 # Bind the UI port 4243 to the container ip

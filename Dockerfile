@@ -18,7 +18,7 @@ ADD /files /tmp/installation
 # Increase max file watches
 # ADD /files/installation/60-max-user-watches.conf /etc/sysctl.d/60-max-user-watches.conf
 
-RUN chmod +x /tmp/installation/install.sh && /tmp/installation/install.sh && rm -rf /tmp/installation
+RUN chmod +x /tmp/installation/install.sh && sync && /tmp/installation/install.sh && rm -rf /tmp/installation
 
 #########################################
 ##              VOLUMES                ##

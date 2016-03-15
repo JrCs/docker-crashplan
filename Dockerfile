@@ -4,7 +4,7 @@ FROM jeanblanchard/java:jre-8
 ##        ENVIRONMENTAL CONFIG         ##
 #########################################
 # Set correct environment variables
-ENV CRASHPLAN_VERSION=4.4.1
+ENV CRASHPLAN_VERSION=4.5.2
 
 # LC_ALL=en_US.UTF-8"     \
 # LANG="en_US.UTF-8"      \

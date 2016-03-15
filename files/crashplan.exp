@@ -23,7 +23,7 @@ send "y\r"
 expect "What directory do you wish to link the CrashPlan executable to?"
 send "/usr/local/bin\r"
 
-expect "What directory do you wish to store backups in?"
+expect "What directory do you wish to store incoming backup data?"
 send "/storage\r"
 
 expect "/storage does not exist.  Create /storage?"

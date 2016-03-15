@@ -3,7 +3,7 @@
 set -e
 
 apk update
-apk add bash wget ca-certificates tar expect findutils coreutils procps
+apk add bash wget ca-certificates openssl tar expect findutils coreutils procps
 apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/
 
 # Generate en_US.UTF-8 locale
@@ -32,7 +32,7 @@ cp /tmp/installation/entrypoint.sh /tmp/installation/crashplan.sh /
 chmod +rx /entrypoint.sh /crashplan.sh
 
 # Remove unneccessary package
-apk del wget ca-certificates expect
+apk del expect
 
 # Remove unneccessary directories
 rm -rf /boot /home /lost+found /media /mnt /run /srv

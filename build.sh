@@ -1,4 +1,3 @@
 #!/bin/bash
 
-docker build -t jrcs/crashplan . && \
-docker push jrcs/crashplan
+docker build -t jrcs/crashplan:dev .

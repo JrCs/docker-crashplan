@@ -1,6 +1,6 @@
 [![](https://badge.imagelayers.io/jrcs/crashplan:latest.svg)](https://imagelayers.io/?images=jrcs/crashplan:latest 'Get your own badge on imagelayers.io')
 # docker-crashplan
-Lightweight (185MB) [Crashplan](http://www.crashplan.com) docker container.
+Lightweight (169MB) [Crashplan](http://www.crashplan.com) docker container.
 
 ## Features:
 * Automatic version upgrade

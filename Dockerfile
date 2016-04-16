@@ -1,14 +1,14 @@
-FROM jeanblanchard/java:jre-8
+FROM alpine:latest
 
 #########################################
 ##        ENVIRONMENTAL CONFIG         ##
 #########################################
 # Set correct environment variables
-ENV CRASHPLAN_VERSION=4.5.2
-
-# LC_ALL=en_US.UTF-8"     \
-# LANG="en_US.UTF-8"      \
-# LANGUAGE="en_US.UTF-8"
+ENV CRASHPLAN_VERSION=4.6.0 \
+    GLIBC_VERSION=2.23-r1   \
+    LC_ALL=en_US.UTF-8      \
+    LANG=en_US.UTF-8        \
+    LANGUAGE=en_US.UTF-8
 
 #########################################
 ##         RUN INSTALL SCRIPT          ##

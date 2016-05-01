@@ -29,5 +29,6 @@ docker run -d \
 * `/var/crashplan`: where the configuration files and logs are store
 * `/storage`: where backup files are store
 
-## Environment variables
-You can force the public ip address and port to use with the `PUBLIC_IP`and `PUBLIC_PORT` environment variables.
+## Optional environment variables:
+* `PUBLIC_IP`and `PUBLIC_PORT`: force the public ip address and port to use.
+* `TZ`: time zone to use in the crashplan logs.

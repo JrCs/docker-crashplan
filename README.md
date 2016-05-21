@@ -10,7 +10,7 @@ Lightweight (169MB) [Crashplan](http://www.crashplan.com) docker container.
 
 # Quick Start
 
-Launch the crashplan container
+- Launch the crashplan container
 
 ```bash
 docker run -d \
@@ -22,6 +22,13 @@ docker run -d \
   --volume /srv/crashplan/storage:/storage \
   jrcs/crashplan:latest
 ```
+
+- Copy the information from `/srv/crashplan/data/id/.ui_info` to your local machine.  
+  On Windows, `C:\ProgramData\CrashPlan\.ui_info`, on Linux `/var/crashplan/data/id/.ui_info`.
+- Make sure to keep a backup of the old contents.
+- In the file, replace the IP (should be `0.0.0.0` or `127.0.0.1`) with the IP of your docker host.
+- Make sure you can connect to ports 4242 and 4343 on your docker host.
+- Start your local CrashPlan GUI.
 
 # Configuration  
 

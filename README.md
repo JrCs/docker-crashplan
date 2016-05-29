@@ -23,10 +23,13 @@ docker run -d \
   jrcs/crashplan:latest
 ```
 
-- Copy the information from `/srv/crashplan/data/id/.ui_info` to your local machine.  
-  On Windows, `C:\ProgramData\CrashPlan\.ui_info`, on Linux `/var/crashplan/data/id/.ui_info`.
-- Make sure to keep a backup of the old contents.
-- In the file, replace the IP (should be `0.0.0.0` or `127.0.0.1`) with the IP of your docker host.
+## Access the GUI from your desktop crashplan application
+- Make a backup of the current `.ui_info` file of your desktop machine locate:
+  * On Linux: `/var/crashplan/data/id/.ui_info`
+  * On OSX: `/Library/Application Support/CrashPlan/.ui_info`
+  * On Windows: `C:\ProgramData\CrashPlan\.ui_info`
+- Replace your `.ui_info` file of your desktop machine with the one of the crashplan container: `/srv/crashplan/data/id/.ui_info`.
+- In the `.ui_info` file of your desktop machine, replace the IP (should be `0.0.0.0` or `127.0.0.1`) with the IP of your docker host.
 - Make sure you can connect to ports 4242 and 4343 on your docker host.
 - Start your local CrashPlan GUI.
 

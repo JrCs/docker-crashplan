@@ -5,7 +5,8 @@ FROM alpine:latest
 #########################################
 # Set correct environment variables
 ENV CRASHPLAN_VERSION=4.7.0 \
-    GLIBC_VERSION=2.23-r1   \
+    CRASHPLAN_SERVICE=HOME  \
+    GLIBC_VERSION=2.23-r2   \
     LC_ALL=en_US.UTF-8      \
     LANG=en_US.UTF-8        \
     LANGUAGE=en_US.UTF-8

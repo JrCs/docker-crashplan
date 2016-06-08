@@ -2,17 +2,24 @@
 
 set -e
 
+# Determine Crashplan Service Level to install (home or business)
+if [ "$CRASHPLAN_SERVICE" = "PRO" ]; then
+    SVC_LEVEL="CrashPlanPRO"
+else
+    SVC_LEVEL="CrashPlan"
+fi
+
 install_deps='expect sed'
 apk add --update bash wget ca-certificates openssl findutils coreutils procps $install_deps
 apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/
 
 # Add glibc
-wget -q -O /etc/apk/keys/andyshinn.rsa.pub https://raw.githubusercontent.com/andyshinn/alpine-pkg-glibc/master/andyshinn.rsa.pub
-wget https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk
+wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.23-r2/sgerrand.rsa.pub
+wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk
 # Add glibc-bin
-wget https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk
+wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk
 # Add glibc-i18n
-wget https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-i18n-${GLIBC_VERSION}.apk
+wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-i18n-${GLIBC_VERSION}.apk
 
 # Install all glibc packages
 apk add glibc-*${GLIBC_VERSION}.apk && rm glibc-*${GLIBC_VERSION}.apk
@@ -24,11 +31,14 @@ apk del glibc-i18n
 
 mkdir /tmp/crashplan
 
-wget -O- http://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_${CRASHPLAN_VERSION}_Linux.tgz \
-    | tar -xz --strip-components=1 -C /tmp/crashplan
+wget -O- http://download.code42.com/installs/linux/install/${SVC_LEVEL}/${SVC_LEVEL}_${CRASHPLAN_VERSION}_Linux.tgz \
+   | tar -xz --strip-components=1 -C /tmp/crashplan
 
+
+mkdir -p /usr/share/applications
 cd /tmp/crashplan && chmod +x /tmp/installation/crashplan.exp && sync && /tmp/installation/crashplan.exp || exit $?
 cd / && rm -rf /tmp/crashplan
+rm -rf /usr/share/applications
 
 # Bind the UI port 4243 to the container ip
 sed -i "s|</servicePeerConfig>|</servicePeerConfig>\n\t<serviceUIConfig>\n\t\t\

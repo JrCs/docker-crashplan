@@ -1,5 +1,7 @@
 #!/usr/bin/env expect
 
+set timeout 120
+
 spawn "./install.sh"
 
 expect "Press enter to continue with installation."

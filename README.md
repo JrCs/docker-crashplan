@@ -23,6 +23,8 @@ docker run -d \
   jrcs/crashplan:latest
 ```
 
+- or use the the start.sh script (which you will need to customise for your situation)
+
 ## Access the GUI from your desktop crashplan application
 - Make a backup of the current `.ui_info` file of your desktop machine locate:
   * On Linux: `/var/crashplan/data/id/.ui_info`
@@ -32,6 +34,10 @@ docker run -d \
 - In the `.ui_info` file of your desktop machine, replace the IP (should be `0.0.0.0` or `127.0.0.1`) with the IP of your docker host.
 - Make sure you can connect to ports 4242 and 4343 on your docker host.
 - Start your local CrashPlan GUI.
+
+Alternatively, if using Windows you can use the VB Script "RunCrashplanWindows10.vbs" to choose between local/remote connections. This 
+requires Crashplan to be installed on local computer. 
+
 
 # Configuration  
 

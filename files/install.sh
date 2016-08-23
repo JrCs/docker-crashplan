@@ -11,28 +11,12 @@ fi
 
 install_deps='expect sed'
 apk add --update bash wget ca-certificates openssl findutils coreutils procps $install_deps
-apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/
-
-# Add glibc
-wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.23-r2/sgerrand.rsa.pub
-wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk
-# Add glibc-bin
-wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk
-# Add glibc-i18n
-wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-i18n-${GLIBC_VERSION}.apk
-
-# Install all glibc packages
-apk add glibc-*${GLIBC_VERSION}.apk && rm glibc-*${GLIBC_VERSION}.apk
-
-# Generate en_US.UTF-8 locale
-/usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
-# Remove unneccessary package
-apk del glibc-i18n
+apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/
 
 mkdir /tmp/crashplan
 
 wget -O- http://download.code42.com/installs/linux/install/${SVC_LEVEL}/${SVC_LEVEL}_${CRASHPLAN_VERSION}_Linux.tgz \
-   | tar -xz --strip-components=1 -C /tmp/crashplan
+    | tar -xz --strip-components=1 -C /tmp/crashplan
 
 
 mkdir -p /usr/share/applications
@@ -55,21 +39,21 @@ apk del $install_deps
 
 # Remove unneccessary files and directories
 rm -rf /usr/local/crashplan/jre/lib/plugin.jar \
-    /usr/local/crashplan/jre/lib/ext/jfxrt.jar \
-    /usr/local/crashplan/jre/bin/javaws \
-    /usr/local/crashplan/jre/lib/javaws.jar \
-    /usr/local/crashplan/jre/lib/desktop \
-    /usr/local/crashplan/jre/plugin \
-    /usr/local/crashplan/jre/lib/deploy* \
-    /usr/local/crashplan/jre/lib/*javafx* \
-    /usr/local/crashplan/jre/lib/*jfx* \
-    /usr/local/crashplan/jre/lib/amd64/libdecora_sse.so \
-    /usr/local/crashplan/jre/lib/amd64/libprism_*.so \
-    /usr/local/crashplan/jre/lib/amd64/libfxplugins.so \
-    /usr/local/crashplan/jre/lib/amd64/libglass.so \
-    /usr/local/crashplan/jre/lib/amd64/libgstreamer-lite.so \
-    /usr/local/crashplan/jre/lib/amd64/libjavafx*.so \
-    /usr/local/crashplan/jre/lib/amd64/libjfx*.so
+   /usr/local/crashplan/jre/lib/ext/jfxrt.jar \
+   /usr/local/crashplan/jre/bin/javaws \
+   /usr/local/crashplan/jre/lib/javaws.jar \
+   /usr/local/crashplan/jre/lib/desktop \
+   /usr/local/crashplan/jre/plugin \
+   /usr/local/crashplan/jre/lib/deploy* \
+   /usr/local/crashplan/jre/lib/*javafx* \
+   /usr/local/crashplan/jre/lib/*jfx* \
+   /usr/local/crashplan/jre/lib/amd64/libdecora_sse.so \
+   /usr/local/crashplan/jre/lib/amd64/libprism_*.so \
+   /usr/local/crashplan/jre/lib/amd64/libfxplugins.so \
+   /usr/local/crashplan/jre/lib/amd64/libglass.so \
+   /usr/local/crashplan/jre/lib/amd64/libgstreamer-lite.so \
+   /usr/local/crashplan/jre/lib/amd64/libjavafx*.so \
+   /usr/local/crashplan/jre/lib/amd64/libjfx*.so
 
 rm -rf /boot /home /lost+found /media /mnt /run /srv
 rm -rf /usr/local/crashplan/log

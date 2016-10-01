@@ -4,7 +4,7 @@ FROM frolvlad/alpine-glibc:alpine-3.4
 ##        ENVIRONMENTAL CONFIG         ##
 #########################################
 # Set correct environment variables
-ENV CRASHPLAN_VERSION=4.7.0 \
+ENV CRASHPLAN_VERSION=4.8.0 \
     CRASHPLAN_SERVICE=HOME  \
     LC_ALL=C.UTF-8          \
     LANG=C.UTF-8            \

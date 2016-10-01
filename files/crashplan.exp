@@ -7,15 +7,6 @@ spawn "./install.sh"
 expect "Press enter to continue with installation."
 send "\r"
 
-expect "Press enter to read the EULA."
-send "\r"
-
-expect "More"
-send "q\r"
-
-expect "Do you accept and agree to be bound by the EULA?"
-send "yes\r"
-
 expect "What parent directory do you wish to install CrashPlan into?"
 send "/usr/local\r"
 

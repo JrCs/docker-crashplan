@@ -1,0 +1,11 @@
+--- a/bin/CrashPlanEngine.orig
++++ b/bin/CrashPlanEngine
+@@ -128,7 +128,7 @@
+ case $1 in
+ 	start)
+ 	
+-		FULL_CP="$TARGETDIR/lib/com.backup42.desktop.jar:$TARGETDIR/lang"
++		FULL_CP="$TARGETDIR/lib/com.backup42.desktop.jar:$TARGETDIR/lang:$TARGETDIR"
+                 
+ 		PID=`_findpid`
+ 		if [[ -n "$PID" ]]; then

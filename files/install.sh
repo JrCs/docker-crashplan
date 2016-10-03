@@ -10,7 +10,7 @@ else
 fi
 
 install_deps='expect sed'
-apk add --update bash wget ca-certificates openssl findutils coreutils procps $install_deps
+apk add --update bash wget ca-certificates openssl findutils coreutils procps libstdc++ $install_deps
 apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/
 
 mkdir /tmp/crashplan
@@ -22,8 +22,12 @@ wget -O- http://download.code42.com/installs/linux/install/${SVC_LEVEL}/${SVC_LE
 
 mkdir -p /usr/share/applications
 cd /tmp/crashplan && chmod +x /tmp/installation/crashplan.exp && sync && /tmp/installation/crashplan.exp || exit $?
+echo
 cd / && rm -rf /tmp/crashplan
 rm -rf /usr/share/applications
+
+# Patch CrashPlanEngine
+cd /usr/local/crashplan && patch -p1 < /tmp/installation/CrashPlanEngine.patch || exit $?
 
 # Bind the UI port 4243 to the container ip
 sed -i "s|</servicePeerConfig>|</servicePeerConfig>\n\t<serviceUIConfig>\n\t\t\

@@ -60,6 +60,6 @@ rm -rf /usr/local/crashplan/jre/lib/plugin.jar \
    /usr/local/crashplan/jre/lib/amd64/libjavafx*.so \
    /usr/local/crashplan/jre/lib/amd64/libjfx*.so
 
-rm -rf /boot /home /lost+found /media /mnt /run /srv
+rm -rf /boot /home /lost+found /media /mnt /srv
 rm -rf /usr/local/crashplan/log
 rm -rf /var/cache/apk/*

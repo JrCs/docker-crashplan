@@ -10,7 +10,7 @@ else
 fi
 
 install_deps='expect sed'
-apk add --update bash wget ca-certificates openssl findutils coreutils procps libstdc++ $install_deps
+apk add --update bash wget ca-certificates openssl findutils coreutils procps libstdc++ rsync $install_deps
 apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/
 
 mkdir /tmp/crashplan
@@ -43,7 +43,8 @@ chmod +rx /entrypoint.sh /crashplan.sh
 apk del $install_deps
 
 # Remove unneccessary files and directories
-rm -rf /usr/local/crashplan/jre/lib/plugin.jar \
+rm -rf /usr/local/crashplan/*.pid \
+   /usr/local/crashplan/jre/lib/plugin.jar \
    /usr/local/crashplan/jre/lib/ext/jfxrt.jar \
    /usr/local/crashplan/jre/bin/javaws \
    /usr/local/crashplan/jre/lib/javaws.jar \
@@ -61,5 +62,5 @@ rm -rf /usr/local/crashplan/jre/lib/plugin.jar \
    /usr/local/crashplan/jre/lib/amd64/libjfx*.so
 
 rm -rf /boot /home /lost+found /media /mnt /run /srv
-rm -rf /usr/local/crashplan/log
+rm -rf /usr/local/crashplan/cache /usr/local/crashplan/log
 rm -rf /var/cache/apk/*

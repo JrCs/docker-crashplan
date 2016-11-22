@@ -30,7 +30,7 @@ docker run -d \
   * On Windows: `C:\ProgramData\CrashPlan\.ui_info`
 - Replace your `.ui_info` file of your desktop machine with the one of the crashplan container: `/srv/crashplan/data/id/.ui_info`.
 - In the `.ui_info` file of your desktop machine, replace the IP (should be `0.0.0.0` or `127.0.0.1`) with the IP of your docker host.
-- Make sure you can connect to ports 4242 and 4343 on your docker host.
+- Make sure you can connect to ports 4242 and 4243 on your docker host.
 - Start your local CrashPlan GUI.
 
 # Configuration  

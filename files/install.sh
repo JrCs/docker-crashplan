@@ -10,7 +10,7 @@ else
 fi
 
 install_deps='expect sed'
-apk add --update bash wget ca-certificates openssl findutils coreutils procps libstdc++ rsync $install_deps
+apk add --update bash openssl findutils coreutils procps libstdc++ rsync $install_deps
 apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/
 
 mkdir /tmp/crashplan
@@ -64,3 +64,4 @@ rm -rf /usr/local/crashplan/*.pid \
 rm -rf /boot /home /lost+found /media /mnt /run /srv
 rm -rf /usr/local/crashplan/cache /usr/local/crashplan/log
 rm -rf /var/cache/apk/*
+rm -f  /root/.wget-hsts

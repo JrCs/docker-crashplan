@@ -16,7 +16,7 @@ Lightweight (169MB) [Crashplan](http://www.crashplan.com) docker container.
 docker run -d \
   --name crashplan \
   -h $HOSTNAME \
-  -e TZ \
+  -e TZ="${TZ:-$(cat /etc/timezone 2>/dev/null)}" \
   --publish 4242:4242 --publish 4243:4243 \
   --volume /srv/crashplan/data:/var/crashplan \
   --volume /srv/crashplan/storage:/storage \
@@ -41,4 +41,4 @@ docker run -d \
 
 ## Optional environment variables:
 * `PUBLIC_IP`and `PUBLIC_PORT`: force the public ip address and port to use.
-* `TZ`: time zone to use in the crashplan logs.
+* `TZ`: time zone to use in the crashplan logs. Use /etc/timezone string values, e.g. "Europe/Paris"

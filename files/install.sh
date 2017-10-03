@@ -18,9 +18,10 @@ apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge
 mkdir /tmp/crashplan
 
 echo "Downloading $SVC_LEVEL ${CRASHPLAN_VERSION}..."
-wget -O- ${SVC_URL} \
-    | tar -xz --strip-components=1 -C /tmp/crashplan
-
+if [ ! -d /tmp/crashplan ]; then
+    mkdir -p /tmp/crashplan;
+fi
+wget -O- ${SVC_URL} | tar -xz --strip-components=1 -C /tmp/crashplan
 
 mkdir -p /usr/share/applications
 cd /tmp/crashplan && chmod +x /tmp/installation/crashplan.exp && sync && /tmp/installation/crashplan.exp || exit $?

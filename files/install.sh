@@ -22,7 +22,7 @@ mkdir /tmp/crashplan
 echo "Downloading $SVC_LEVEL ${CRASHPLAN_VERSION}..."
 wget "${SVC_URL}" -O "/tmp/${SVC_FILENAME}";
 tar zxvf "/tmp/${SVC_FILENAME}" -C /tmp/crashplan;
-unset "/tmp/${SVC_FILENAME}";
+unlink "/tmp/${SVC_FILENAME}";
 
 mkdir -p /usr/share/applications
 cd /tmp/crashplan && chmod +x /tmp/installation/crashplan.exp && sync && /tmp/installation/crashplan.exp || exit $?

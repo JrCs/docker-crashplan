@@ -5,8 +5,10 @@ set -e
 # Determine Crashplan Service Level to install (home or business)
 if [ "$CRASHPLAN_SERVICE" = "PRO" ]; then
     SVC_LEVEL="CrashPlanPRO"
+    SVC_URL="https://web-eam-msp.crashplanpro.com/client/installers/${SVC_LEVEL}_${CRASHPLAN_VERSION}_1436674888490_33_Linux.tgz"
 else
     SVC_LEVEL="CrashPlan"
+    SVC_URL="https://download.code42.com/installs/linux/install/${SVC_LEVEL}/${SVC_LEVEL}_${CRASHPLAN_VERSION}_Linux.tgz"
 fi
 
 install_deps='expect sed'
@@ -16,8 +18,7 @@ apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge
 mkdir /tmp/crashplan
 
 echo "Downloading $SVC_LEVEL ${CRASHPLAN_VERSION}..."
-# wget -O- https://download.code42.com/installs/linux/install/${SVC_LEVEL}/${SVC_LEVEL}_${CRASHPLAN_VERSION}_Linux.tgz \
-wget -O- https://web-eam-msp.crashplanpro.com/client/installers/${SVC_LEVEL}_${CRASHPLAN_VERSION}_1436674888490_33_Linux.tgz \
+wget -O- ${SVC_URL} \
     | tar -xz --strip-components=1 -C /tmp/crashplan
 
 

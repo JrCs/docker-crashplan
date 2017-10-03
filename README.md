@@ -20,7 +20,7 @@ docker run -d \
   --publish 4242:4242 --publish 4243:4243 \
   --volume /srv/crashplan/data:/var/crashplan \
   --volume /srv/crashplan/storage:/storage \
-  jrcs/crashplan:latest
+  davask/d-crashplan:pro
 ```
 
 ## Access the GUI from your desktop crashplan application

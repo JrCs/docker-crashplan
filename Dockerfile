@@ -31,7 +31,7 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases
 #########################################
 # Set correct environment variables
 ENV CRASHPLAN_VERSION=4.8.0 \
-    CRASHPLAN_SERVICE=HOME  \
+    CRASHPLAN_SERVICE=PRO  \
     LC_ALL=en_US.UTF-8      \
     LANG=en_US.UTF-8        \
     LANGUAGE=en_US.UTF-8

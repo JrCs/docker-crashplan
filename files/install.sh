@@ -17,11 +17,10 @@ install_deps='expect sed'
 apk add --update bash openssl findutils coreutils procps libstdc++ rsync $install_deps
 apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/
 
-mkdir /tmp/crashplan
-
 echo "Downloading $SVC_LEVEL ${CRASHPLAN_VERSION}..."
 wget "${SVC_URL}" -O "/tmp/${SVC_FILENAME}";
-tar zxvf "/tmp/${SVC_FILENAME}" -C /tmp/crashplan;
+tar zxvf "/tmp/${SVC_FILENAME}" -C /tmp;
+mv /tmp/crashplan-install /tmp/crashplan;
 unlink "/tmp/${SVC_FILENAME}";
 
 mkdir -p /usr/share/applications

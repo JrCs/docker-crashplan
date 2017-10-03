@@ -16,7 +16,8 @@ apk add cpio --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge
 mkdir /tmp/crashplan
 
 echo "Downloading $SVC_LEVEL ${CRASHPLAN_VERSION}..."
-wget -O- http://download.code42.com/installs/linux/install/${SVC_LEVEL}/${SVC_LEVEL}_${CRASHPLAN_VERSION}_Linux.tgz \
+# wget -O- https://download.code42.com/installs/linux/install/${SVC_LEVEL}/${SVC_LEVEL}_${CRASHPLAN_VERSION}_Linux.tgz \
+wget -O- https://web-eam-msp.crashplanpro.com/client/installers/${SVC_LEVEL}_${CRASHPLAN_VERSION}_1436674888490_33_Linux.tgz \
     | tar -xz --strip-components=1 -C /tmp/crashplan
 
 
